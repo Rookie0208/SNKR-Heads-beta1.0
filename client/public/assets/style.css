@@ -1,0 +1,8 @@
+*{
+    margin: 0;
+    font-family: 'Archivo Black', sans-serif;
+    font-family: 'Barlow', sans-serif;
+    color: aliceblue;
+    background-color: rgb(15, 15, 15);
+    /* overflow:scroll; */
+}

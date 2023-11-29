@@ -1,0 +1,173 @@
+html, body, #root {
+  background-color: #c91f1f; /* Updated red color */
+  margin: 0; /* Remove default margin */
+  /* overflow:auto; */
+   /* Hide any overflow content */
+}
+
+/* Main container for the registration page */
+.register {
+  width: calc(100vw - 10px); /* Slightly smaller width to create a thinner border */
+  height: calc(100vh - 10px); /* Slightly smaller height to create a thinner border */
+  background-color: rgba(15, 15, 15); /* White background color with some transparency */
+  display: flex;
+  color: #000; /* Black text color */
+  letter-spacing: 2px; /* Increased letter spacing */
+  margin: 5px; /* Add smaller margin to create a thinner border */
+  border-radius: 30px; /* Add curved edges */
+  position: relative; /* Position relative for absolute positioning */
+}
+
+
+/* Logo and button text color */
+.register-logo{
+  background-image: url("../../../public/assets/reg_page_30.gif");
+  height: 800px;
+  width: 800px;
+  background-position: 10px -10px;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+
+.register-button,
+.login-into-button {
+  color: #c91f1f; /* Updated red color for text and buttons */
+}
+
+
+
+/* Left container for the logo and description */
+.register-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  border-radius: 30px; /* Add curved edges */
+
+}
+
+/* Logo */
+.register-logo {
+  font-size: xx-large;
+  font-weight: 800;
+  color: #d22b2b; /* Red color */
+  margin: 1rem;
+  text-align: center;
+}
+
+/* Description */
+.register-description {
+  font-size:small;
+  margin: 1rem;
+  text-align: center;
+  letter-spacing: 10px;
+  transform: translateY(-50px);
+}
+
+/* Right container for the registration form */
+.register-right {
+  flex: 1;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 30px;
+
+}
+
+/* Form container */
+.register-box {
+  width: 100%;
+  max-width: 350px; /* Adjust the maximum width as needed */
+  background-color: #000000;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  border: 0px solid ;
+  /* box-shadow: #c91f1f 10px 10px 100px ; */
+  border-radius: 10px; /* Increase border radius for buttons and fields 
+  */
+  mix-blend-mode:screen;
+  transform: translate(60px,20px);
+
+}
+
+/* Form input fields */
+.register-input {
+  width: 100%;
+  padding: 15px; /* Increase padding for larger fields */
+  border: 1px solid black;
+  border-radius: 60px; /* Increase border radius */
+  outline: none;
+  margin-bottom: 20px; /* Increase margin */
+  font-family: 'Barlow', sans-serif;
+  letter-spacing: 3px;
+  font-size: large;
+  text-align: center;
+  background-color: black;
+}
+
+/* Submit button */
+.register-button {
+  width: 100%;
+  padding: 15px; /* Increase padding for larger buttons */
+  background-color: black; /* Red color */
+  color: #fff;
+  border: none;
+  border-radius: 10px; /* Increase border radius */
+  font-size: 18px;
+  cursor: pointer;
+  margin: 1rem;
+  font-family: 'Barlow', sans-serif;
+  letter-spacing: 3px;
+  font-size: medium;
+  text-align: center;
+  transition: all 0.5s ease-in-out;
+}
+
+.register-button:hover {
+  box-shadow: #c91f1f 0px 0px 10px;
+  opacity: 80%; /* Darker shade of red on hover */
+  transition: all 0.5s ease-in-out;
+}
+
+.login-into-button{
+  width: 10rem;
+  padding: 15px; /* Increase padding for larger buttons */
+  background-color: black; /* Red color */
+  color: #fff;
+  border: none;
+  border-radius: 15px; /* Increase border radius */
+  font-size: 18px;
+  cursor: pointer;
+  margin: 1rem;
+  font-family: 'Barlow', sans-serif;
+  letter-spacing: 3px;
+  font-size: medium;
+  text-align: center;
+
+}
+.login-into-button:hover{
+  box-shadow: #c91f1f 0px 0px 10px;
+  opacity: 80%; /* Darker shade of red on hover */
+  transition: all 0.5s ease-in-out;
+}
+
+.reglink{
+  background-color: #000;
+  /* width: 20rem; */
+  padding: 15px;
+  /* background-color: #d22b2b; */
+  color: #fff;
+  border: none;
+  border-radius: 15px;
+  font-size: 18px;
+  cursor: pointer;
+  margin: 1rem;
+}

@@ -1,0 +1,96 @@
+.post{
+    box-shadow: 1px 1px 72px 12px rgba(0,0,0,0.52);
+    -webkit-box-shadow: 1px 1px 72px 12px rgba(0,0,0,0.52);
+    -moz-box-shadow: 1px 1px 72px 12px rgba(0,0,0,0.52);
+    border-radius: 10px;
+    width: 100%;
+    background-color: red;
+    border: 2px solid green;
+    margin-top: 1em;
+}
+.postwrapper{
+    padding: 1em;
+
+}
+.posttop{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.posttopleft{
+    display: flex;
+    align-items: center;
+}
+
+.postprofileimg{
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.postusername{
+    font-size: medium;
+    font-weight: 500;
+    margin: 0 0.5rem;
+
+}
+.postdate{
+    font-size: small;
+    font-weight: 400;
+    margin-top: 0.1rem;
+}
+.postcentre{
+    margin: 0.5rem 0;
+}
+
+.postimg{
+    margin-top: 1rem;
+    width: 100%;
+    /* width: auto; */
+    border-radius: 20px;
+    max-height: auto;
+    object-fit: contain;
+}
+.postbottom{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* padding: 0; */
+}
+
+.postbottomleft{
+    display: flex;
+    align-items: center;
+    margin-top: 0;
+
+} 
+
+.likebutton{
+    width: 1.5rem;
+    height: 1.5rem;
+    /* background-color: aliceblue; */
+    margin: 0 0.7rem;
+
+    cursor: pointer;
+    /* mix-blend-mode:multiply; */
+}
+.commentbutton{
+    width: 1.5rem;
+    height: 1.5rem;
+    /* background-color: aliceblue; */
+    margin: 0 0.7rem;
+    cursor: pointer;
+    /* mix-blend-mode:luminosity; */
+}
+.sharebutton{
+    width: 1.5rem;
+    height: 1.5rem;
+    /* background-color: aliceblue; */
+    margin: 0 0.7rem;
+
+    cursor: pointer;
+    /* mix-blend-mode:multiply; */
+}
+.postlikecounter{
+    font-size: small;
+}

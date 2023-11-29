@@ -1,0 +1,109 @@
+.topbarcontainer{
+    height: 3em;
+    width: 100%;
+    background-color: rgb(153, 0, 0);
+    display: flex;
+    align-items: center;
+    position:sticky;
+    top: 0;
+    z-index: 999;
+}
+.logo{
+    font-size: large;
+    margin-left: 2em;
+    font-weight: bold;
+    color: aliceblue;
+    cursor: pointer;
+    background-color: rgb(153, 0, 0);
+    
+}
+
+.topbarleft{
+   flex:3;
+   /* background-color: aquamarine; */
+   background-color: rgb(153, 0, 0);
+}
+.topbarcentre{
+    flex:5; 
+   /* background-color: rgb(20, 48, 255); */
+   background-color: rgb(153, 0, 0);
+
+
+ }
+
+ .searchbar{
+    width: 100%;
+    height: 2em;
+    /* background-color: rgba(17, 15, 15, 0.604);  */
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+ }
+ .searchicon{
+    font-size: large !important;
+    margin: 1em;
+ }
+ .searchicon:focus{
+    outline:none;
+ }
+.searchinput{
+    border: none;
+    width: 70%;
+}
+ .topbarright{
+    flex:4;
+   /* background-color: rgb(20, 255, 134); */
+   background-color: rgb(153, 0, 0);
+
+   display: flex;
+   align-items: center;
+   justify-content: space-around;
+   color: rgb(153, 0, 0) ;
+
+ }
+ .topbarlink{
+    margin-right: 2em;
+    font-size: small;
+   background-color: rgb(153, 0, 0);
+
+ }
+ .topbarlinks{
+   background-color: rgb(153, 0, 0);
+
+ }
+ .topbaricons{
+    display: flex;
+   background-color: rgb(153, 0, 0);
+
+ }
+ .topbariconitem{
+    margin-right:2em;
+    cursor: pointer;
+    position: relative;
+   background-color: rgb(153, 0, 0);
+
+ }
+
+ .topbariconbadge{
+    width: 2em;
+    height: 2em;
+    background-color: rgb(153, 0, 0);
+    border-radius: 50%;
+    color: aliceblue;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.5em;
+    top:-1em;
+    right: -1em;
+ }
+
+ .topbarimg{
+    height:30px;
+    width: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+    
+ }

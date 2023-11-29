@@ -1,0 +1,10 @@
+.feed{
+    flex:5.5;
+    background-color: rgb(157, 224, 249);
+}
+.feedwrapper{
+    padding:2em;
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* align-items: center; */
+}
