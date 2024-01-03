@@ -62,8 +62,8 @@ export default function Topbar() {
     return (
         <div className='topbarcontainer'>
             <div className='topbarleft'>
-                <Link to="/" style={{ textDecoration: "none", backgroundColor: "brown" }}>
-                    <span className='logo'>SNEAKER_HEADS</span>
+                <Link to="/" style={{ textDecoration: "none", backgroundColor: "#c91f1f" }}>
+                    <span className='logo'>SNKR-HEADS</span>
                 </Link>
             </div>
             <div className='topbarcentre'>
@@ -97,10 +97,10 @@ export default function Topbar() {
             </div>
             <div className='topbarright'>
                 <div className='topbarlinks'>
-                    <span className='topbarlink'>Home_Page</span>
-                    <span className='topbarlink'>Timeline</span>
+                    {/* <span className='topbarlink'>HOME PAGE</span> */}
+                    {/* <span className='topbarlink'>TIMELINE</span> */}
                 </div>
-                <div className='topbaricons'>
+                {/* <div className='topbaricons'>
                     <div className='topbariconitem'>
                         <Person />
                         <span className='topbariconbadge'>1</span>
@@ -113,10 +113,16 @@ export default function Topbar() {
                         <Notifications />
                         <span className='topbariconbadge'>3</span>
                     </div>
-                </div>
+                </div> */}
                 {/* <img src="/assets/posts/post9.jpeg" className='topbarimg' alt="post1" /> */}
-                <Link className='topbarimg' to={'/login'}>
-                    <span className="topbarlink" onClick={handleClick}>Sign out</span>
+                <Link className='rightlinks' to={'/'}>
+                    <span className="topbarlink">
+                    HOME-PAGE
+                    </span>
+                </Link>
+
+                <Link className='rightlinks' to={"/"}>
+                    <span className="topbarlink" onClick={handleClick}>SIGN-OUT</span>
                 </Link>
                 <Link className='topbarimg' to={`/profile/${user.username}`}>
                     <img src={user.profilePicture ? PF + user.profilePicture : PF + "icons/noavatar.png"} className='topbarimg' alt="post1" />

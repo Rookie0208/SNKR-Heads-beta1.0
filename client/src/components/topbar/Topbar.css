@@ -1,32 +1,35 @@
 .topbarcontainer{
     height: 3em;
     width: 100%;
-    background-color: rgb(153, 0, 0);
+    background-color: #c91f1f;
     display: flex;
     align-items: center;
     position:sticky;
     top: 0;
     z-index: 999;
+    font-family: 'Barlow', sans-serif;
 }
 .logo{
-    font-size: large;
+    font-size: medium;
+    letter-spacing: 10px;
     margin-left: 2em;
-    font-weight: bold;
+    font-weight:600;
     color: aliceblue;
     cursor: pointer;
-    background-color: rgb(153, 0, 0);
+    background-color: #c91f1f;
     
 }
 
 .topbarleft{
    flex:3;
    /* background-color: aquamarine; */
-   background-color: rgb(153, 0, 0);
+   background-color: #c91f1f;
+   margin-right: 7.5rem;
 }
 .topbarcentre{
     flex:5; 
    /* background-color: rgb(20, 48, 255); */
-   background-color: rgb(153, 0, 0);
+   background-color: #c91f1f;
 
 
  }
@@ -38,10 +41,12 @@
     border-radius: 30px;
     display: flex;
     align-items: center;
+    margin-left: 3rem;
  }
  .searchicon{
     font-size: large !important;
     margin: 1em;
+    
  }
  .searchicon:focus{
     outline:none;
@@ -49,26 +54,52 @@
 .searchinput{
     border: none;
     width: 70%;
-}
- .topbarright{
-    flex:4;
-   /* background-color: rgb(20, 255, 134); */
-   background-color: rgb(153, 0, 0);
+    outline:none;
+    font-family: 'Barlow', sans-serif;
+    letter-spacing: 3px;
 
+}
+
+.searchresults{
+   list-style: none;
    display: flex;
+   padding: 0.5rem;
+   flex-direction: column;
+   border-radius: 5px;
+   /* position: relative; */
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+   width: 70%;
+   height: auto;
+   z-index: 10;
+   cursor: pointer;
+   transform: translate(-60%,100%);
+   /* transform: translateY(150%); */
+}
+
+ .topbarright{
+    display: flex;
+    flex:4;
+   background-color: #c91f1f;
+
    align-items: center;
    justify-content: space-around;
-   color: rgb(153, 0, 0) ;
+   margin-left: 10rem;
 
  }
  .topbarlink{
     margin-right: 2em;
-    font-size: small;
-   background-color: rgb(153, 0, 0);
+    font-size: x-small;
+    font-family: 'Barlow', sans-serif;
+    font-weight: 500;
+    letter-spacing: 2px;
+    background-color: #c91f1f;
 
  }
  .topbarlinks{
-   background-color: rgb(153, 0, 0);
+   background-color: #c91f1f;
+   
 
  }
  .topbaricons{
@@ -100,10 +131,21 @@
  }
 
  .topbarimg{
-    height:30px;
-    width: 30px;
+    height:35px;
+    width: 35px;
     border-radius: 50%;
     object-fit: cover;
     cursor: pointer;
-    
+    background-color: #c91f1f;
+ }
+
+ .rightlinks{
+   margin-right: 2em;
+   font-size: medium;
+   font-family: 'Barlow', sans-serif;
+   font-weight: bold;
+   letter-spacing: 2px;
+   background-color: #c91f1f;
+   text-decoration: none;
+
  }

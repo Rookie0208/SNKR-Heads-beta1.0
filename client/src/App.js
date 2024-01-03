@@ -11,6 +11,7 @@ import {
   } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "./context/AuthContext";
+import Faq from "./pages/faq/Faq";
 
   
 
@@ -21,16 +22,37 @@ function App() {
     // return <Register/>  
 
     const {user} = useContext(AuthContext) 
-    return(
+    // return(
+    //     <Router>
+    //         <Routes>
+    //             <Route exact path="/" element={user?<Home/> : <Register/>}/>
+    //             <Route path="/profile/:username" element={<Profile/>}/>
+    //             <Route path="/login" element={user? <Navigate to="/" />:<Login/>}/>
+    //             <Route path="/register" element={user? <Navigate to="/" />:<Register/>}/>
+    //         </Routes>
+    //     </Router>
+    // );
+
+    return (
         <Router>
-            <Routes>
-                <Route exact path="/" element={user?<Home/> : <Register/>}/>
-                <Route path="/profile/:username" element={<Profile/>}/>
-                <Route path="/login" element={user? <Navigate to="/" />:<Login/>}/>
-                <Route path="/register" element={user? <Navigate to="/" />:<Register/>}/>
-            </Routes>
+          <Routes>
+            <Route
+              path="/"
+              element={user ? <Home /> : <Navigate to="/register" />}
+            />
+            <Route path="/profile/:username" element={<Profile />} />
+            <Route
+              path="/login"
+              element={user ? <Navigate to="/" /> : <Login />}
+            />
+            <Route
+              path="/register"
+              element={user ? <Navigate to="/" /> : <Register />}
+            />
+            <Route path="/faq" element={<Faq />} />
+          </Routes>
         </Router>
-    );
+      );
 }
 
 export default App;

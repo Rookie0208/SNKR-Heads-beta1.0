@@ -48,7 +48,7 @@ export default function Share() {
     }
 
   return (
-    <div className='share'>this is Share
+    <div className='share'>
         <div className='sharewrapper'>
             <div className='sharetop'>
                 <img src={user.profilePicture ? PF+user.profilePicture : PF+"icons/noavatar.png"}className='shareprofileimg' alt='shareprofileimage' ></img>
@@ -66,11 +66,11 @@ export default function Share() {
                 <div className='shareoptions'>
                     <label htmlFor='file' className='shareoption'>
                         <ScatterPlot className='shareicon'/>
-                        <span className='shareoptiontext'>photo or vid</span>
+                        <span className='shareoptiontext'></span>
                         <input style={{display:"none"}} type='file' id="file" accept='.png,.jpeg,.jpg' onChange={(e)=>setFile(e.target.files[0])} ></input>
                     </label>
                       {/* [0] to take only one file */}
-                    <div className='shareoption'>
+                    {/* <div className='shareoption'>
                         <People className='shareicon'/>
                         <span className='shareoptiontext'>Tag</span>
                     </div>
@@ -81,7 +81,7 @@ export default function Share() {
                     <div className='shareoption'>
                         <EmojiEmotions  className='shareicon'/>
                         <span className='shareoptiontext'>Feelings</span>
-                    </div>
+                    </div> */}
                 </div>
                 <button className='dropbutton' type='submit'>Drop it!</button>
             </form>

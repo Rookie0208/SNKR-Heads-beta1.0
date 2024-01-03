@@ -7,6 +7,7 @@ import Rightbar from "../../components/rightbar/Rightbar";
 import axios from "axios";
 import { useState,useEffect } from 'react';
 import {useParams} from "react-router";
+import EditProfile from '../edit/Edit';
 
 
 
@@ -38,7 +39,7 @@ export default function Profile() {
             <div className="profile">
                 <Sidebar />
                 <div className='profileRight'>
-                    <div className='profileRightTop'>blah blah
+                    <div className='profileRightTop'>
                         <div className='profilecover'>
                         {/* <img className='profilecoverimg' src={`${PF}posts/post3.jpeg`} alt='' /> */}
                         <img className='profilecoverimg' src={user.coverPicture ? PF+user.coverPicture : PF+"icons/nocover.png"} alt='' />
@@ -50,6 +51,7 @@ export default function Profile() {
                             <h4 className='profileinfoname'>{user.username}</h4>
                             <span className='profileinfodesc'>{user.desc}</span>
                         </div>
+                        {/* <EditProfile user={user} onUpdate={setUser} /> */}
 
                     </div>
                     <div className='profileRightBottom'>
