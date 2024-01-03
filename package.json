@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "cors": "^2.8.5",
+    "heroku": "^8.7.1",
     "http-proxy-middleware": "^2.0.6",
     "mongodb": "^6.3.0"
   }
