@@ -57,6 +57,12 @@ app.get("/users",(req,res)=>{
     res.send("Welcome to user page");
 })
 
-app.listen(process.env.PORT|| 8800,()=>{
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 8800;
+}
+
+
+app.listen(port,()=>{
     console.log("i am listening")
 })
