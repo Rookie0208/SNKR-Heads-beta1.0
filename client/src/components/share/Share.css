@@ -45,6 +45,10 @@
 
 }
 
+.shareinput::placeholder{
+    color: rgb(212, 212, 212);
+}
+
 .shareinput:focus{
     outline: none;
 }
