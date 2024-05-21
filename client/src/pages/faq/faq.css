@@ -3,6 +3,8 @@
 .faq {
     max-width: 100vw;
     min-height: 60vh;
+    /* height: 84vh; */
+    height: auto;
     margin: 1rem;
     padding: 1rem 5rem 5rem 5rem;
     border-radius: 30px;
@@ -14,20 +16,34 @@
     text-transform: uppercase;
     letter-spacing: 8px;
     margin-bottom: 5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #c91f1f;
+
   }
     
   .disclaimer {
-    margin-top: 5rem;
+    /* position: relative; */
+    /* bottom: 1rem; */
+    margin-top: 6rem;
+    /* background-color: blue; */
     /* margin-bottom: 2rem; */
+
     font-style: italic;
     color: #888;
     /* font-size: large; */
     letter-spacing: 2px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
     text-align: center;
+  }
+
+  .disclaimer .desc {
+    border-bottom: 1px solid #c91f1f;
+    border-top: 1px solid #c91f1f;
+    padding-top: 1rem;
+padding-bottom: 1rem;
   }
 
   .goback{
@@ -73,6 +89,7 @@
     margin: 2rem auto;
     padding: 1rem;
     font-family: Arial, sans-serif;
+    
   }
   
   .faq-container h2 {

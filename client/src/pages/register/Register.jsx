@@ -1,32 +1,69 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import './register.css';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 
 export default function Register() {
+  const [errorMessage, setErrorMessage] = useState('');
   const username = useRef();
   const email = useRef();
   const password = useRef();
   const confirmPassword = useRef();
 
-  const history = useNavigate();
+  const validateEmail = (email) => {
+    const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return re.test(String(email).toLowerCase());
+  };
+
+  const validatePassword = (password) => {
+    const re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
+    return re.test(password);
+  };
+
+  const navigate = useNavigate();
 
   const handleClick = async (e) => {
     e.preventDefault();
-    if (confirmPassword.current.value !== password.current.value) {
-      confirmPassword.current.setCustomValidity("Passwords don't match");
-    } else {
-      const user = {
-        username: username.current.value,
-        email: email.current.value,
-        password: password.current.value,
-      };
-      try {
-        await axios.post('/auth/register', user);
-        history('/login');
-      } catch (err) {
-        console.log(err);
-      }
+    const emailValue = email.current.value;
+    const passwordValue = password.current.value;
+    const confirmPasswordValue = confirmPassword.current.value;
+
+    if (!validateEmail(emailValue)) {
+      setErrorMessage('Invalid email address');
+      return;
+    }
+
+    else if (!validatePassword(passwordValue)) {
+      setErrorMessage('Password must be at least 6 characters long and include at least one letter and one number');
+      return;
+    }
+
+    else if (passwordValue !== confirmPasswordValue) {
+      setErrorMessage('Passwords do not match');
+      return;
+    }
+    else {
+      setErrorMessage(''); // Clear any previous error messages
+
+    }
+
+    console.log('Registration Data:', {
+      username: username.current.value,
+      email: emailValue,
+      password: passwordValue,
+    });
+
+    const user = {
+      username: username.current.value,
+      email: emailValue,
+      password: passwordValue,
+    };
+    try {
+      await axios.post('/auth/register', user);
+      navigate('/login');
+    } catch (err) {
+      console.error(err);
+      setErrorMessage('An error occurred during registration. Please try again.');
     }
   };
 
@@ -69,19 +106,15 @@ export default function Register() {
             placeholder='CONFIRM PASSWORD'
             className='register-input'
           />
+          {errorMessage && <span className='error-message'>{errorMessage}</span>}
           <button className='register-button' type='submit'>
             SIGN UP
           </button>
           <Link className='reglink' to="/login">
-
-          <button className='login-into-button'>LOG IN</button>
+            <button className='login-into-button'>LOG IN</button>
           </Link>
         </form>
       </div>
     </div>
   );
 }
-
-
-
-// #c91f1f

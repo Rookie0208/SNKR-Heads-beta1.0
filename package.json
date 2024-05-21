@@ -4,5 +4,17 @@
     "heroku": "^8.7.1",
     "http-proxy-middleware": "^2.0.6",
     "mongodb": "^6.3.0"
-  }
+  },
+  "name": "snkr-heads-beta1.0",
+  "description": "This is the first beta version for the official SNKR-Heads Website.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
 }
