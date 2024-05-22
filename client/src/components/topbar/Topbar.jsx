@@ -36,6 +36,7 @@ export default function Topbar() {
         }
         try {
             const response = await axios.get(`/users/search?searchQuery=${searchQuery}`);
+            console.log(searchQuery);
             setSearchResults(response.data);
             setShowSearchResults(true);
         } catch (error) {
@@ -75,10 +76,8 @@ export default function Topbar() {
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
                         onClick={(e) => e.stopPropagation()}
-                        onKeyDown={(e) => {
-                            if (e.key === 'Enter') {
-                                handleSearch(); // Call handleSearch when Enter key is pressed
-                            }
+                        onKeyUp={(e) => {
+                                handleSearch(); 
                         }}
                     />
                     {showSearchResults && (

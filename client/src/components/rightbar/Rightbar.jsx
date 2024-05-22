@@ -27,14 +27,14 @@ import Online from "../online/Online";
 //         console.log("isFollowing:", isFollowing);
 //         console.log("followed:", followed);
 //       }, [currentUser, user]);
-      
+
 
 //     useEffect(() => {
 //         const getFriends = async () => {
 //             try {
 //                 const friendList = await axios.get("/users/friends/" + user._id);
 //                 setFriends(friendList.data);
-    
+
 //                 // Check if the displayed user is a friend
 //                 const isFriend = friendList.data.some(friend => friend._id === user._id);
 //                 setFollowed(isFriend);
@@ -44,14 +44,14 @@ import Online from "../online/Online";
 //         };
 //         getFriends();
 //     }, [user]);
-    
+
 //     const handleClick = async () => {
 //         try {
 //             if (followed) {
 //                 const response = await axios.put(`/users/${user._id}/unfollow`, {
 //                     userId: currentUser._id,
 //                 });
-    
+
 //                 if (response.data === "You already Follow this user") {
 //                     // If the response indicates that the user is already following,
 //                     // treat it as a successful unfollow operation
@@ -63,7 +63,7 @@ import Online from "../online/Online";
 //                 const response = await axios.put(`/users/${user._id}/follow`, {
 //                     userId: currentUser._id,        
 //                 });
-    
+
 //                 if (response.data === "You already Follow this user") {
 //                     // If the response indicates that the user is already following,
 //                     // treat it as a successful follow operation
@@ -72,18 +72,18 @@ import Online from "../online/Online";
 //                     // Handle any other error or success conditions here
 //                 }
 //             }
-    
+
 //             // Toggle the 'followed' state
 //             setFollowed(!followed);
 //         } catch (err) {
 //             console.log(err);
 //         }
 //     };
-    
 
 
-    
-    
+
+
+
 
 //     // const isGetFollowed = async()=>{
 //     //     if(user._id){
@@ -229,7 +229,7 @@ import Online from "../online/Online";
 //     );
 // } 
 
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext, useRef } from 'react';
 import "./Rightbar.css";
 import axios from "axios";
 import { Link } from 'react-router-dom';
@@ -243,9 +243,19 @@ export default function Rightbar({ user }) {
     const [friends, setFriends] = useState([]);
     const { user: currentUser, dispatch } = useContext(AuthContext);
     const [followed, setFollowed] = useState(false);
+    const [editOn, setEditOn] = useState(false);
+    const city = useRef();
+    const country = useRef();
+    const relationship = useRef();
+
+    const editModeOn = () => {
+        setEditOn(true);
+    }
 
     useEffect(() => {
         const isFollowing = currentUser.followings.includes(user?._id);
+        // const isFollowing = user.followers.includes(currentUser?._id);
+        console.log(currentUser);
         console.log("isFollowing:", isFollowing);
         setFollowed(isFollowing);
     }, [currentUser, user]);
@@ -261,7 +271,7 @@ export default function Rightbar({ user }) {
         };
         getFriends();
     }, [user]);
-    
+
     const handleClick = async () => {
         try {
             if (followed) {
@@ -292,10 +302,37 @@ export default function Rightbar({ user }) {
 
             // Toggle the 'followed' state
             setFollowed(!followed);
+            console.log(followed);
         } catch (err) {
             console.log(err);
         }
     };
+
+    const handleEdits = async (e) => {
+        e.preventDefault();
+        const cityValue = city.current.value;
+        const countryValue = country.current.value;
+        const relationshipValue = relationship.current.value;
+        console.log('Edited Data:', {
+            city: cityValue,
+            country: countryValue,
+            relationship: relationshipValue,
+          });
+
+          const details = {
+            userId: currentUser._id,
+            city: cityValue,
+            country: countryValue,
+            relationship: relationshipValue,
+          };
+          try {
+            await axios.post(`/users/${details.userId}/edit`, details);
+            setEditOn(false);
+            window.location.reload();
+          } catch (err) {
+            console.error(err);
+          }
+    }
 
     const HomeRightbar = () => {
         return (
@@ -305,24 +342,24 @@ export default function Rightbar({ user }) {
                     <span className="birthdaytext"><b>Pola foster</b> and <b>3 other</b> friends have a birthday today</span>
                 </div>
                 <img className="rightbarad" src="/assets/icons/ad.png" alt="advertisement"></img>
- <h4 className="rightbartitle">Online Friends</h4>
-                 <ul className="rightbarfriendlist">
-                     <li className="rightbarfriend">
-                         <div className="rightbarprofileimgcontainer">
-                             <img className="rightbarprofileimg" src="/assets/posts/post4.png" alt="profile img"></img>
-                             <span className="rightbaronline"></span>
-                         </div>
-                         <span className="rightbarusername">John Carter</span>
+                <h4 className="rightbartitle">Online Friends</h4>
+                <ul className="rightbarfriendlist">
+                    <li className="rightbarfriend">
+                        <div className="rightbarprofileimgcontainer">
+                            <img className="rightbarprofileimg" src="/assets/posts/post4.png" alt="profile img"></img>
+                            <span className="rightbaronline"></span>
+                        </div>
+                        <span className="rightbarusername">John Carter</span>
 
-                     </li>
+                    </li>
 
-                     {friends.map((u) =>
-                     (
-                         <Online key={u.id} user={u} />
-                     )
-                     )}
+                    {friends.map((u) =>
+                    (
+                        <Online key={u.id} user={u} />
+                    )
+                    )}
 
-                 </ul>
+                </ul>
             </>
         );
     };
@@ -338,8 +375,44 @@ export default function Rightbar({ user }) {
                 )}
                 <h4 className="rightbartitle">
                     User Information
+                    {!editOn && <img src={`${PF}icons/edit.png`} alt="" className="edit-btn" onClick={editModeOn} />}
                 </h4>
-                <div className="rightbarinfo">
+                {editOn && <div>
+                    <form className="edit-form" onSubmit={handleEdits}>
+                        <div className="rightbarinfoitem">
+                            <label className="rightbarinfokey">city:</label>
+                            <input
+                                placeholder="city"
+                                type="text"
+                                ref={city}
+                                className="edit-input"
+                                defaultValue={user.city}
+                            />
+                        </div>
+                        <div className="rightbarinfoitem">
+                            <label className="rightbarinfokey">From:</label>
+                            <input
+                                placeholder="country"
+                                type="text"
+                                ref={country}
+                                className="edit-input"
+                                defaultValue={user.from}
+                            />
+                        </div>
+                        <div className="rightbarinfoitem">
+                            <label className="rightbarinfokey">Relationship:</label>
+                            <select name="relationship" id="relationship" ref={relationship} className="edit-input" defaultValue={user.relationship}>
+                                <option value="">Select</option>
+                                <option value="1" key="1">Single</option>
+                                <option value="2" key="2">Married</option>
+                            </select>
+                        </div>
+                        <button className='submit-edit-btn' type='submit'>
+                            DONE
+                        </button>
+                    </form>
+                </div>}
+                {!editOn && <div className="rightbarinfo">
                     <div className="rightbarinfoitem">
                         <span className="rightbarinfokey">city:</span>
                         <span className="rightbarinfovalue">{user.city}</span>
@@ -352,7 +425,7 @@ export default function Rightbar({ user }) {
                         <span className="rightbarinfokey">Relationship:</span>
                         <span className="rightbarinfovalue">{user.relationship === 1 ? "Single" : user.relationship === 2 ? "Married" : "-"}</span>
                     </div>
-                </div>
+                </div>}
                 <h4 className="rightbartitle">
                     User Friends
                 </h4>

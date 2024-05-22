@@ -105,7 +105,7 @@ router.put("/:id/follow",async (req,res)=>{
             if(!user.followers.includes(req.body.userId)){
                 await user.updateOne({$push:{followers: req.body.userId}});
                 await currentUser.updateOne({$push:{followings: req.params.id}});
-                res.status(403).json("User Followed Successfully!!");
+                res.status(200).json("User Followed Successfully!!");
             }else{
                 res.status(403).json("You already Follow this user");
             }
@@ -130,7 +130,7 @@ router.put("/:id/unfollow",async (req,res)=>{
             if(user.followers.includes(req.body.userId)){
                 await user.updateOne({$pull:{followers: req.body.userId}});
                 await currentUser.updateOne({$pull:{followings: req.params.id}});
-                res.status(403).json("User Unfollowed Successfully!!");
+                res.status(200).json("User Unfollowed Successfully!!");
             }else{
                 res.status(403).json("you dont follow this user");
             }
@@ -157,6 +157,35 @@ router.get("/search", async (req, res) => {
       res.status(500).json(err);
     }
   });
+
+  //editDetails
+  router.post("/:id/edit", async (req, res) => {
+    try {
+        const user = await User.findById(req.params.id);
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+        if (user._id.toString() === req.body.userId) {
+            const updatedUser = await User.findByIdAndUpdate(
+                req.params.id,
+                {
+                    $set: {
+                        city: req.body.city,
+                        from: req.body.country,
+                        relationship: req.body.relationship
+                    }
+                },
+                { new: true } // returns the updated document
+            );
+            return res.status(200).json({ message: 'User updated successfully', user: updatedUser });
+        } else {
+            return res.status(403).json({ message: 'Unauthorized action' });
+        }
+    } catch (error) {
+        return res.status(500).json({ message: 'Error updating user', error });
+    }
+});
+
 
 
 // router.get("/",(req,res)=>{

@@ -89,11 +89,11 @@ export default function Post({post}) {
                 </div>
                 <div className='postcentre'>
                     <span className='posttext'>{post.desc}</span>
-                    <img className='postimg' src={PF+post.img} alt='post'></img>
+                    {post.img && <img className='postimg' src={PF+post.img} alt='post'></img>}
                 </div>
                 <div className='postbottom'>
                     <div className='postbottomleft'>
-                        <img className='likebutton' src={`${PF}icons/like_button.png`} alt='like button' onClick={likeHandle} ></img>
+                        <img className='likebutton' src={like===0?`${PF}icons/like_button.png`:`${PF}icons/liked.png`} alt='like button' onClick={likeHandle} ></img>
                         {/* <img className='commentbutton' src={`${PF}icons/comment_button.png`} alt='comment button'></img> */}
                         <span className='postlikecounter'>{like} people like it</span>
                     </div>
