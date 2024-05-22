@@ -1,6 +1,6 @@
 import React from 'react';
 import "./login.css";
-import { useContext, useRef } from 'react';
+import { useContext, useRef, useState } from 'react';
 import { loginCall } from '../../apiCalls';
 import { AuthContext } from '../../context/AuthContext';
 import CircularProgress from '@mui/material/CircularProgress';
@@ -8,14 +8,24 @@ import { Link } from 'react-router-dom';
 
 export default function Login() {
 
-  const email = useRef();
-  const password = useRef();
+  const emailRef = useRef();
+  const passwordRef = useRef();
   const {user, isFetching, error, dispatch} = useContext(AuthContext);
-
-  const handleClick = (e)=>{
-    e.preventDefault();//prevent reload of the page when log in is pressed
-    // console.log(email.current.value);
-    loginCall({ email:email.current.value, password:password.current.value}, dispatch);
+  const [errorMessage, setErrorMessage] = useState('');
+  
+  const handleClick = async (e) => {
+    e.preventDefault();
+    const email = emailRef.current.value;
+    const password = passwordRef.current.value;
+  
+    try {
+      await loginCall({ email, password }, dispatch);
+      // If login is successful, redirect or perform other actions
+    } catch (error) {
+      console.error('Login error:', error);
+      // Display error message to the user
+      setErrorMessage('Invalid email or password. Please try again.');
+    }
   };
 
   console.log(user);
@@ -29,8 +39,8 @@ export default function Login() {
             </div>
             <div className='loginright'>
               <form className='loginbox' onSubmit={handleClick}>
-                <input type='email' placeholder='Enter your Email' required className='logininput' ref={email}></input>
-                <input type='password' placeholder="Enter your password" required minLength="6" className='logininput' ref={password}></input>
+                <input type='email' placeholder='Enter your Email' required className='logininput' ref={emailRef}></input>
+                <input type='password' placeholder="Enter your password" required minLength="6" className='logininput' ref={passwordRef}></input>
                 <button className='loginbutton' type='submit' disabled={isFetching}>{isFetching ? <CircularProgress className='progress' size="15px" /> : "LOGIN"}</button>
                 {/* <span className='loginforgot'>Forgot Password</span> */}
                 <Link className='loglink' to="/register">
