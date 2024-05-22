@@ -8,16 +8,35 @@
     top: 0;
     z-index: 999;
     font-family: 'Barlow', sans-serif;
-}
-.logo{
-    font-size: medium;
+
+   }
+
+   .logo{
+      font-size: 1.2rem;
     letter-spacing: 10px;
     margin-left: 2em;
     font-weight:600;
     color: aliceblue;
     cursor: pointer;
     background-color: #c91f1f;
-    
+    display: flex;
+    flex-shrink: inherit;
+}
+
+@media (max-width: 1300px) {
+    .logo {
+    letter-spacing: 7px;
+
+      font-size: 1rem;
+    }
+}
+
+@media (max-width: 1070px) {
+   .logo {
+   letter-spacing: 7px;
+
+     font-size: 0.7rem;
+   }
 }
 
 .topbarleft{
@@ -30,7 +49,7 @@
     flex:5; 
    /* background-color: rgb(20, 48, 255); */
    background-color: #c91f1f;
-
+/* background-color: blue; */
 
  }
 
@@ -62,19 +81,21 @@
 
 .searchresults{
    list-style: none;
-   display: flex;
+   /* display: flex; */
    padding: 0.5rem;
-   flex-direction: column;
    border-radius: 5px;
-   /* position: relative; */
-   justify-content: center;
-   align-items: center;
+   position: absolute;
+   /* justify-content: center; */
+   /* align-items: center; */
    text-align: center;
-   width: 70%;
+   width: 25%;
    height: auto;
    z-index: 10;
    cursor: pointer;
-   transform: translate(-60%,100%);
+   padding-right: 3rem;
+   padding-left: 3rem;
+   transform: translate(0%, 50%);
+   top: 45px;
    /* transform: translateY(150%); */
 }
 
@@ -89,8 +110,8 @@
 
  }
  .topbarlink{
-    margin-right: 2em;
-    font-size: x-small;
+    /* margin-right: 2em; */
+    font-size: small;
     font-family: 'Barlow', sans-serif;
     font-weight: 500;
     letter-spacing: 2px;
@@ -98,10 +119,15 @@
 
  }
  .topbarlinks{
-   background-color: #c91f1f;
-   
-
- }
+    background-color: #c91f1f;
+    
+    
+   }
+   @media (max-width: 1060px) {
+     .topbarlink {
+        font-size: 0.5rem;
+     }
+   }
  .topbaricons{
     display: flex;
    background-color: rgb(153, 0, 0);

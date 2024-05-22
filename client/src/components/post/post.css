@@ -27,6 +27,8 @@
     align-items: center;
 }
 
+
+
 .postprofileimg{
     width: 2em;
     height: 2em;
@@ -146,3 +148,18 @@
     background-image: none;
 
   }
+
+
+  @media (max-width: 900px){
+    .posttopleft {
+        /* flex-direction: column; */
+        /* display: block; */
+    }
+
+.postdate {
+    /* display: block; */
+    font-size: 0.6rem;
+    /* padding-left: 2.5rem; */
+
+}
+}

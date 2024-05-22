@@ -41,18 +41,25 @@
 
 }
 .sidebarlistitem{
+    /* background-color: blue; */
     display: flex;
     align-items: center;
     margin: 1em;
     margin-bottom: 4em;
     font-size: 1.4em;
     letter-spacing: 5px;
+}
+
+.sidebarlistitemtext:hover {
+    color: #c91f1f;
+    transition: 20;
 
 }
 .sidebaricon{
     margin-right: 2em;
-
+    
 }
+
 .sidebarbutton{
     width:4em;
     height: 2rem;
@@ -60,7 +67,7 @@
     padding-bottom: 0.2rem;
     border-radius: 0.5rem;
     font-weight: bold;
-
+    
 }
 .sidebarhr{
     margin:1rem;
@@ -84,3 +91,29 @@
     object-fit: cover;
     margin-right: 1rem;
 } */
+
+
+@media (max-width: 900px) {
+    .sidebarlistitemtext {
+        font-size: 0.9rem;
+letter-spacing: 3px;
+
+    }
+    .sidebaricon{
+        margin-right: 0.8rem;
+    
+    }
+}
+
+@media (max-width: 700px) {
+    .sidebarlistitemtext {
+        /* font-size: 0.8rem; */
+/* letter-spacing: 1.5px; */
+display: none;
+
+    }
+    .sidebaricon{
+        margin-right: 0.5rem;
+    
+    }
+}
