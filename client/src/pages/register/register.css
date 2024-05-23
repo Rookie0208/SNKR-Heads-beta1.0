@@ -22,12 +22,13 @@ html, body, #root {
 /* Logo and button text color */
 .register-logo{
   background-image: url("../../../public/assets/reg_page_30.gif");
-  height: 800px;
-  width: 800px;
+  height: 100vh;
+  width: 80%;
   background-position: 10px -10px;
   background-repeat: no-repeat;
   background-size: contain;
 }
+
 
 
 .register-button,
@@ -75,7 +76,8 @@ html, body, #root {
   align-items: center;
   justify-content: center;
   border-radius: 30px;
-
+/* background-color: red; */
+padding-right: 4rem;
 }
 
 /* Form container */
@@ -98,6 +100,25 @@ html, body, #root {
 
 }
 
+@media (max-width: 900px) {
+  .register {
+    display: flex;
+    flex-direction: column;
+  }
+  .register-logo {
+    width: 80vw;
+    height: 60vh;
+  }
+  .register-description {
+    font-size: 1.2rem;
+  }
+  .register-box {
+    margin-right: 4rem;
+  }
+}
+@media (max-width: 1300px) {
+  
+}
 /* Form input fields */
 .register-input {
   width: 100%;
@@ -110,9 +131,14 @@ html, body, #root {
   letter-spacing: 3px;
   font-size: large;
   text-align: center;
-  background-color: black;
+  /* background-color: black; */
 }
 
+@media (max-width: 1100px) {
+  .register-box {
+    width: 80%;
+  }
+}
 /* Submit button */
 .register-button {
   width: 100%;

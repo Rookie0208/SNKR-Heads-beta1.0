@@ -75,8 +75,8 @@ export default function Post({post}) {
                 <div className='posttop'>
                     <div className='posttopleft'>
                         {/* <img className='postprofileimg' src={Users.filter((u)=>u.id === post.userId)[0].profilePicture} alt="demo post 1" ></img> */}
-                        <Link to={`/profile/${user.username}/`}>
                         <img className='postprofileimg' src={user.profilePicture? PF+"posts/"+user.profilePicture : PF+"icons/noavatar.png"} alt="demo post 1" ></img>
+                        <Link to={`/profile/${user.username}/`}>
                         {/* <span className='postu((sername'>{Users.filteru)=>u.id === post.userId)[0].username}</span> */}
 
                         </Link>

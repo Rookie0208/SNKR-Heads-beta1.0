@@ -1,165 +1,221 @@
 /* Main container for the login page */
 .login {
-    width: calc(100vw - 10px); /* Slightly smaller width to create a thinner border */
-    height: calc(100vh - 10px);
-    background-color: rgba(15, 15, 15);
-    display: flex;
-    color: #000;
-    letter-spacing: 2px;
-    margin: 5px;
-    border-radius: 30px;
-    position: relative;
-    justify-content: center; /* Center content horizontally */
-    align-items: center; /* Center content vertically */
+  width: calc(100vw - 10px);
+  /* Slightly smaller width to create a thinner border */
+  height: calc(100vh - 10px);
+  background-color: rgba(15, 15, 15);
+  display: flex;
+  color: #000;
+  letter-spacing: 2px;
+  margin: 5px;
+  border-radius: 30px;
+  position: relative;
+  justify-content: center;
+  /* Center content horizontally */
+  align-items: center;
+  /* Center content vertically */
+}
+
+/* Logo and button text color */
+.loginlogo,
+.loginbutton,
+.loginregisterbutton {
+  color: #c91f1f;
+}
+.loginwrapper {
+  /* width: 100%; */
+  height: 100%;
+}
+/* Left container for the logo and description */
+.loginleft {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  border-radius: 30px;
+  background-image: url("../../../public/assets/reg_page_30.gif");
+  /* background-position: 0px 100px; */
+  background-size: 320px 220px;
+  background-repeat: no-repeat;
+  background-position: 445px 0px;
+  height: 150px;
+  mix-blend-mode: luminosity;
+  /* background-color: pink; */
+  width: 100%;
+}
+
+/* Logo */
+.loginlogo {
+  font-size: xx-large;
+  font-weight: 800;
+  color: #d22b2b;
+  margin: 1rem;
+  text-align: center;
+}
+
+/* Description */
+.logindescription {
+  font-size: medium;
+  margin: 1rem;
+  text-align: center;
+  letter-spacing: 15px;
+  transform: translateY(100px);
+  margin-top: 2rem;
+}
+
+/* Right container for the registration form */
+.loginright {
+  flex: 1;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 30px;
+}
+
+/* Form container */
+.loginbox {
+  width: 100%;
+  max-width: 350px;
+  background-color: rgb(15, 15, 15);
+  /* border-radius: 10px; */
+  /* box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 10px ; */
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  /* border: 1px solid #ccc; */
+  border-radius: 20px;
+  margin-top: 2rem;
+}
+
+@media (max-width: 1200px) {
+  .loginwrapper {
+    width: 100vw;
+    /* height: 40vh; */
+    /* display: flex; */
+    /* flex-direction: column; */
   }
-  
-  /* Logo and button text color */
-  .loginlogo, .loginbutton, .loginregisterbutton {
-    color: #c91f1f;
+
+  .loginlogo {
+    width: 100vw;
   }
-  
-  /* Left container for the logo and description */
-  .loginleft {
+}
+
+@media (max-width: 900px) {
+  .loginwrapper {
+    width: 80vw;
+    /* height: 40vh; */
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
-    border-radius: 30px;
-    background-image: url("../../../public/assets/reg_page_30.gif");
-    /* background-position: 0px 100px; */
-    background-size: 320px 220px;
-    background-repeat: no-repeat;
-    background-position: 445px 0px;
-    height: 150px;
-    mix-blend-mode: luminosity;
   }
-  
-  /* Logo */
+
   .loginlogo {
 
-    font-size: xx-large;
-    font-weight: 800;
-    color: #d22b2b;
-    margin: 1rem;
-    text-align: center;
-  }
-  
-  /* Description */
-  .logindescription {
-    font-size:medium;
-    margin: 1rem;
-    text-align: center;
-    letter-spacing: 15px;
-    transform: translateY(100px);
-    margin-top: 2rem;
-  }
-  
-  /* Right container for the registration form */
-  .loginright {
-    flex: 1;
-    padding: 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 30px;
-  }
-  
-  /* Form container */
-  .loginbox {
-    width: 100%;
-    max-width: 350px;
-    background-color:rgb(15,15,15);
-    /* border-radius: 10px; */
-    /* box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 10px ; */
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    /* border: 1px solid #ccc; */
-    border-radius: 20px;
-    margin-top: 2rem;
-  }
-  
-  /* Form input fields */
-  .logininput {
-    width: 100%;
-    padding: 15px; /* Increase padding for larger fields */
-    border: 1px solid rgb(15,15,15);
-    border-radius: 60px; /* Increase border radius */
-    outline: none;
-    margin-bottom: 20px; /* Increase margin */
-    font-family: 'Barlow', sans-serif;
-    letter-spacing: 3px;
-    font-size: large;
-    text-align: center;
-    background-color:rgb(15,15,15);
-  }
-  input:-webkit-autofill {
-    -webkit-box-shadow: 0px 0px 0px 900px #c91f1f inset !important;
-    /* background-color: transparent !important; */
-}
-  
-  /* Submit button */
-  .loginbutton {
-    width: 80%;
-    padding: 15px; /* Increase padding for larger buttons */
-    background-color: black; /* Red color */
-    color: #fff;
-    border: none;
-    border-radius: 10px; /* Increase border radius */
-    font-size: 18px;
-    cursor: pointer;
-    margin: 1rem;
-    font-family: 'Barlow', sans-serif;
-    letter-spacing: 3px;
-    font-size: medium;
-    text-align: center;
-    transition: all 0.5s ease-in-out;
-    /* transform: translateX(-5px); */
-  }
-
-  
-  .loginbutton:hover {
-    /* background-color: #a71c1c; */
     width: 40%;
+    /* height: 60vh; */
   }
-  
-  /* Login Register button */
-  .loginregisterbutton {
-    width: 16rem;
-    padding: 1px;
-    background-color: black;
-    color: #fff;
-    border: none;
-    border-radius: 10px;
-    font-family: 'Barlow', sans-serif;
-    letter-spacing: 3px;
-    font-size: medium;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.5s ease-in-out;
 
-    /* margin: 1rem; */
-  }
-  .loginregisterbutton:hover{
-    /* background-color: #a71c1c; */
-    width: 8rem;
-    transition: all 0.5s ease-in-out;
-
+  .logindescription {
+    font-size: 1rem;
+    /* margin-left: 2rem; */
+    margin-right: 3rem;
+    margin-top: 2rem;
+  letter-spacing: 10px;
 
   }
-  
-  .loglink{
-    background-color: #000;
-    /* width: 20rem; */
-    padding: 12px;
-    /* background-color: #d22b2b; */
-    color: #fff;
-    border: none;
-    border-radius: 10px;
-    font-size: 18px;
-    cursor: pointer;
-    margin: 1rem;
-  }
+
+
+}
+
+/* Form input fields */
+.logininput {
+  width: 100%;
+  padding: 15px;
+  /* Increase padding for larger fields */
+  border: 1px solid rgb(15, 15, 15);
+  border-radius: 60px;
+  /* Increase border radius */
+  outline: none;
+  margin-bottom: 20px;
+  /* Increase margin */
+  font-family: 'Barlow', sans-serif;
+  letter-spacing: 3px;
+  font-size: large;
+  text-align: center;
+  background-color: rgb(15, 15, 15);
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0px 0px 0px 900px #c91f1f inset !important;
+  /* background-color: transparent !important; */
+}
+
+/* Submit button */
+.loginbutton {
+  width: 80%;
+  padding: 15px;
+  /* Increase padding for larger buttons */
+  background-color: black;
+  /* Red color */
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  /* Increase border radius */
+  font-size: 18px;
+  cursor: pointer;
+  margin: 1rem;
+  font-family: 'Barlow', sans-serif;
+  letter-spacing: 3px;
+  font-size: medium;
+  text-align: center;
+  transition: all 0.5s ease-in-out;
+  /* transform: translateX(-5px); */
+}
+
+
+.loginbutton:hover {
+  /* background-color: #a71c1c; */
+  width: 40%;
+}
+
+/* Login Register button */
+.loginregisterbutton {
+  width: 16rem;
+  padding: 1px;
+  background-color: black;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-family: 'Barlow', sans-serif;
+  letter-spacing: 3px;
+  font-size: medium;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+
+  /* margin: 1rem; */
+}
+
+.loginregisterbutton:hover {
+  /* background-color: #a71c1c; */
+  width: 8rem;
+  transition: all 0.5s ease-in-out;
+
+
+}
+
+.loglink {
+  background-color: #000;
+  /* width: 20rem; */
+  padding: 12px;
+  /* background-color: #d22b2b; */
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 18px;
+  cursor: pointer;
+  margin: 1rem;
+}
