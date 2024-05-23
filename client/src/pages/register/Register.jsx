@@ -121,7 +121,7 @@ export default function Register() {
       </div>
       {isModalOpen && <div id="confirmationModal" className="modal">
         <div className="modal-content">
-          <p>You just leveled up your sneaker game! <br />
+          <p>You just leveled up your sneaker game {username.current.value}! <br />
             Login to join the kicks revolution!</p>
           <div className="modal-login-btn">
             <Link className='reglink' style={{ backgroundColor: 'transparent' }} to="/login">

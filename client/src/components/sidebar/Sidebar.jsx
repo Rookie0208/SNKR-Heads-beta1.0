@@ -1,35 +1,47 @@
-import React from "react";
+import React, {useContext} from "react";
 import "./Sidebar.css";
-import {ChatBubble,Groups3,Bookmark,EmojiEvents,ContactSupport} from "@mui/icons-material";
+import { ChatBubble, Groups3, Bookmark, EmojiEvents, ContactSupport, AccountCircleOutlined } from "@mui/icons-material";
 import GrainIcon from '@mui/icons-material/Grain';
-import {Users} from "../../dummyData";
+import { Users } from "../../dummyData";
 import CloseFriend from "../closefriend/CloseFriend";
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import Faq from '../../pages/faq/Faq';
+import { AuthContext } from "../../context/AuthContext";
 
 
-export default function Sidebar(){
-    return(
+export default function Sidebar() {
+
+    const location = useLocation();
+    const { user } = useContext(AuthContext);
+
+    return (
         <div className="sidebar">
             <div className="sidebarwrapper">
                 <ul className="sidebarlist">
                     <li className="sidebarlistitem">
-                    <Link to="/" style={{ textDecoration: "none", backgroundColor: "rgb(15,15,15)" }}>
-                    <GrainIcon className="sidebaricon"/>
-                    <span className="sidebarlistitemtext">FEED</span>
-                    </Link>
+                        <Link to="/" style={{ textDecoration: "none", backgroundColor: "rgb(15,15,15)" }}>
+                            <GrainIcon className="sidebaricon" />
+                            <span className={`sidebarlistitemtext ${location.pathname === '/' ? 'active' : ''}`}>FEED</span>
+                        </Link>
 
                     </li>
                     <li className="sidebarlistitem">
+                        <Link to={`/profile/${user.username}`} style={{ textDecoration: "none", backgroundColor: "rgb(15,15,15)" }} >
+                            <AccountCircleOutlined className="sidebaricon" />
+                            <span className={`sidebarlistitemtext ${location.pathname === `/profile/${user.username}` ? 'active' : ''}`}>PROFILE</span>
+                        </Link>
+
+                    </li>
+                    {/* <li className="sidebarlistitem">
                     <ChatBubble className="sidebaricon"/>
                     <span className="sidebarlistitemtext">CHAT</span>
 
-                    </li>
-                    <li className="sidebarlistitem">
+                    </li> */}
+                    {/* <li className="sidebarlistitem">
                     <Groups3 className="sidebaricon"/>
                     <span className="sidebarlistitemtext">SNEAKS</span>
 
-                    </li>
+                    </li> */}
                     {/* <li className="sidebarlistitem">
                     <Bookmark className="sidebaricon"/>
                     <span className="sidebarlistitemtext">Saved</span>
@@ -41,23 +53,23 @@ export default function Sidebar(){
 
                     </li> */}
                     <li className="sidebarlistitem">
-                    <Link to="/Faq" style={{ textDecoration: "none", backgroundColor: "rgb(15,15,15)" }}>
-                    <ContactSupport className="sidebaricon"/>
-                    <span className="sidebarlistitemtext">FAQ</span>
-                    </Link>
+                        <Link to="/Faq" style={{ textDecoration: "none", backgroundColor: "rgb(15,15,15)" }} >
+                            <ContactSupport className="sidebaricon" />
+                            <span className={`sidebarlistitemtext ${location.pathname === '/Faq' ? 'active' : ''}`}>FAQ</span>
+                        </Link>
 
                     </li>
-                    
+
                 </ul>
                 {/* <button className="sidebarbutton">More</button> */}
-                <hr className="sidebarhr"/>
+                <hr className="sidebarhr" />
                 <ul className="sidebarfriendlist">
                     {/* <li className="sidebarfriend">
                     <img className="sidebarfriendimg" src="assets/posts/post1.jpeg" alt="" ></img>
                     <span className="sidebarfriendname">sneakerhead1 </span>
 
                     </li> */}
-                    {Users.map(u=>(
+                    {Users.map(u => (
                         <CloseFriend user={u} key={u.id} />
                     ))}
 

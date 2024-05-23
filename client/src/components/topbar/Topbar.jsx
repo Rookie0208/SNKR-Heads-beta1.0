@@ -36,7 +36,10 @@ export default function Topbar() {
         }
         try {
             const response = await axios.get(`/users/search?searchQuery=${searchQuery}`);
-            console.log(searchQuery);
+            if(response.data.length === 0) {
+                setShowSearchResults(false);
+                return;
+            }
             setSearchResults(response.data);
             setShowSearchResults(true);
         } catch (error) {
