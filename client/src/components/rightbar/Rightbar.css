@@ -95,3 +95,46 @@
 .rightbarfollowbutton:focus{
     outline: none;
 }
+.edit-btn{
+    margin-left: 20px;
+    height: 20px;
+    width: 20px;
+}
+.edit-btn:hover{
+    height: 23px;
+    width: 23px;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+}
+.edit-input {
+    width: 40%;
+    border: 1px solid black;
+    border-radius: 60px; /* Increase border radius */
+    outline: none;
+    margin-bottom: 5px; /* Increase margin */
+    font-family: 'Barlow', sans-serif;
+    letter-spacing: 3px;
+    text-align: left;
+  }
+
+.submit-edit-btn{
+    width: 40%;
+    padding: 10px; 
+    background-color: black; 
+    color: #fff;
+    border: none;
+    border-radius: 10px; 
+    font-size: 15px;
+    cursor: pointer;
+    margin: 1rem;
+    font-family: 'Barlow', sans-serif;
+    letter-spacing: 2px;
+    font-size: medium;
+    text-align: center;
+    transition: all 0.5s ease-in-out;
+}
+.submit-edit-btn:hover {
+    box-shadow: #c91f1f 0px 0px 10px;
+    opacity: 80%; 
+    transition: all 0.5s ease-in-out;
+  }

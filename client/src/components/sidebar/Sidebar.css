@@ -4,7 +4,7 @@
     /* height: 40px; */
     /* background-color: aqua; */
     /* background-color: rgb(15, 15, 15); */
-    background-color: #c91f1f !important;
+    /* background-color: #c91f1f !important; */
 
     font-family: 'Barlow', sans-serif;
     overflow-y: scroll;
@@ -54,6 +54,10 @@
     color: #c91f1f;
     transition: 20;
 
+}
+.sidebarlistitemtext.active{
+    color: #c91f1f;
+    transition: 20;
 }
 .sidebaricon{
     margin-right: 2em;
