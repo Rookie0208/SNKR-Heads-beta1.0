@@ -26,7 +26,6 @@ export default function Share() {
             desc: desc.current.value
         }
         if (file) {
-            console.log("hi");
             const data = new FormData();
             const fileName = Date.now() + file.name;
             data.append("name", fileName);
@@ -56,7 +55,7 @@ export default function Share() {
         <div className='share'>
             <div className='sharewrapper'>
                 <div className='sharetop'>
-                    <img src={user.profilePicture ? PF + user.profilePicture : PF + "icons/noavatar.png"} className='shareprofileimg' alt='shareprofileimage' ></img>
+                    <img src={user.profilePicture ? PF +"posts/" + user.profilePicture : PF + "icons/noavatar.png"} className='shareprofileimg' alt='shareprofileimage' ></img>
                     <input type='text' className='shareinput' placeholder={'Drop your Drip here ' + user.username} ref={desc} required>
                     </input>
                 </div>

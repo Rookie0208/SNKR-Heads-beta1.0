@@ -186,6 +186,43 @@ router.get("/search", async (req, res) => {
     }
 });
 
+//profile pic update
+router.post("/:id/profile/picture", async (req, res) => {
+    try {
+        const user = await User.findById(req.params.id);
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+        if (user._id.toString() === req.body.userId) {
+            const updatedUser = await User.findByIdAndUpdate(
+                req.params.id,
+                {
+                    $set: {
+                        profilePicture: req.body.fileName
+                    }
+                },
+                { new: true } // returns the updated document
+            );
+            return res.status(200).json({ message: 'User updated successfully', user: updatedUser });
+        } else {
+            return res.status(403).json({ message: 'Unauthorized action' });
+        }
+    } catch (error) {
+        return res.status(500).json({ message: 'Error updating user', error });
+    }
+});
+
+//get all users
+router.get("/all", async(req,res) => {
+    try {
+        const users = await User.find();
+        res.json(users);
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Server Error');
+    }
+});
+
 
 
 // router.get("/",(req,res)=>{

@@ -34,7 +34,15 @@ const storage = multer.diskStorage({
         cb(null, req.body.name);
     },
 })
-
+const profileStore = multer.diskStorage({
+    destination:(req, file, cb)=>{
+        cb(null,"./public/images/posts")
+    },
+    filename:(req, file, cb)=>{
+        console.log(req.body);
+        cb(null, req.body.name);
+    },
+})
 const upload = multer({storage:storage});
 app.post("/api/upload", upload.single("file"), (req,res)=>{
    try{
@@ -43,7 +51,14 @@ app.post("/api/upload", upload.single("file"), (req,res)=>{
     console.log(err);
    } 
 })
-
+const profilePicture = multer({storage:profileStore});
+app.post("/api/profile/upload", profilePicture.single("file"),(req,res)=>{
+    try{
+        return res.status(200).json("profile picture updated successfully!")
+    }catch(err){
+        console.log(err);
+    }
+})
 app.use("/api/users",userRoute);//address to run user route//do all user things here//get users//update users...etc
 
 app.use("/api/auth",authRoute);//for login stuff

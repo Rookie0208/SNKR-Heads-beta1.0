@@ -248,15 +248,13 @@ export default function Rightbar({ user }) {
     const country = useRef();
     const relationship = useRef();
 
-    const editModeOn = () => {
-        setEditOn(true);
+    const editModeToggle = () => {
+        setEditOn(!editOn);
     }
 
     useEffect(() => {
         const isFollowing = currentUser.followings.includes(user?._id);
         // const isFollowing = user.followers.includes(currentUser?._id);
-        console.log(currentUser);
-        console.log("isFollowing:", isFollowing);
         setFollowed(isFollowing);
     }, [currentUser, user]);
 
@@ -317,21 +315,21 @@ export default function Rightbar({ user }) {
             city: cityValue,
             country: countryValue,
             relationship: relationshipValue,
-          });
+        });
 
-          const details = {
+        const details = {
             userId: currentUser._id,
             city: cityValue,
             country: countryValue,
             relationship: relationshipValue,
-          };
-          try {
+        };
+        try {
             await axios.post(`/users/${details.userId}/edit`, details);
             setEditOn(false);
             window.location.reload();
-          } catch (err) {
+        } catch (err) {
             console.error(err);
-          }
+        }
     }
 
     const HomeRightbar = () => {
@@ -375,7 +373,7 @@ export default function Rightbar({ user }) {
                 )}
                 <h4 className="rightbartitle">
                     User Information
-                    {!editOn && <img src={`${PF}icons/edit.png`} alt="" className="edit-btn" onClick={editModeOn} />}
+                    {!editOn && (currentUser._id === user._id) && <img src={`${PF}icons/edit.png`} alt="" className="edit-btn" onClick={editModeToggle} />}
                 </h4>
                 {editOn && <div>
                     <form className="edit-form" onSubmit={handleEdits}>
@@ -410,6 +408,9 @@ export default function Rightbar({ user }) {
                         <button className='submit-edit-btn' type='submit'>
                             DONE
                         </button>
+                        {editOn && <span className="submit-edit-btn" onClick={editModeToggle}>
+                            <img src={`${PF}icons/cross.svg`} className="cancel-btn"  alt="" />
+                        </span>}
                     </form>
                 </div>}
                 {!editOn && <div className="rightbarinfo">

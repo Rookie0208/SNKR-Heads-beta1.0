@@ -3,6 +3,12 @@
     align-items: center;
     margin-bottom: 1rem;
 }
+.sidebarfriend > div{
+    display:flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    cursor: pointer;
+}
 .sidebarfriendimg{
     width: 2em;
     height: auto;
