@@ -90,6 +90,8 @@ export default function Topbar() {
                                     key={result._id}
                                     onClick={() => handleResultClick(result.username)} // Handle click on result
                                 >
+                    {/* <Search className='searchIconResult' /> */}
+
                                     {result.username}
                                 </li>
                             ))}
