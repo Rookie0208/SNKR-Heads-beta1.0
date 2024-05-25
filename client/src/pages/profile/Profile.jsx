@@ -19,8 +19,7 @@ export default function Profile() {
     const [user,setUser] = useState({});
     const params = useParams();
     const username=params.username;
-    const { currentUser, dispatch } = useContext(AuthContext);
-    console.log(currentUser);
+    const currentUser = JSON.parse(localStorage.getItem('user'));
     //params.username will give username in the url
 
     useEffect(()=>{
@@ -70,7 +69,7 @@ export default function Profile() {
                         <img className='profilecoverimg' src={user.coverPicture ? PF+user.coverPicture : PF+"icons/nocover.png"} alt='' />
                         {/* <img className='profileuserimg' src={`${PF}posts/post7.jpeg`} alt='' /> */}
                         <img className='profileuserimg' src={user.profilePicture ? PF+"posts/"+user.profilePicture : PF+"icons/noavatar.png"} alt='' />
-                        { <span className='edit-profile-pic-btn'>
+                        {currentUser._id === user._id && <span className='edit-profile-pic-btn'>
                             <form>
                             <label htmlFor="dp">
                             <CameraAltRounded/>

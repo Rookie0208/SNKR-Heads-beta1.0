@@ -91,11 +91,11 @@ export default function Post({post}) {
                     <span className='posttext'>{post.desc}</span>
                     {post.img && <img className='postimg' src={PF+post.img} alt='post'></img>}
                 </div>
-                <div className='postbottom'>
+                <div className='postbottom'> 
                     <div className='postbottomleft'>
-                        <img className='likebutton' src={like===0?`${PF}icons/like_button.png`:`${PF}icons/liked.png`} alt='like button' onClick={likeHandle} ></img>
+                        <img className='likebutton' src={!isLiked?`${PF}icons/like_button.png`:`${PF}icons/liked.png`} alt='like button' onClick={likeHandle} ></img>
                         {/* <img className='commentbutton' src={`${PF}icons/comment_button.png`} alt='comment button'></img> */}
-                        <span className='postlikecounter'>{like} people like it</span>
+                        <span className='postlikecounter'>{like} people liked it</span>
                     </div>
                     <div className='postbottomright'>
                     {/* <img className='sharebutton' src={`${PF}icons/share_button.png`} alt='share button'></img> */}
