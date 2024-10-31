@@ -44,3 +44,18 @@
  .profileRightBottom{
     display:flex;
  }
+ .edit-profile-pic-btn{
+    position: absolute;
+    bottom: 47px;
+    right: 480px;
+    border-radius: 50%;
+    padding: 5px; /* Adjust as needed */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+ }
+
+ .edit-profile-pic-btn  label{
+    cursor: pointer;
+ }

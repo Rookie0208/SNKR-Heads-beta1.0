@@ -1,11 +1,11 @@
-import React, {useContext} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import "./Sidebar.css";
 import { ChatBubble, Groups3, Bookmark, EmojiEvents, ContactSupport, AccountCircleOutlined } from "@mui/icons-material";
 import GrainIcon from '@mui/icons-material/Grain';
-import { Users } from "../../dummyData";
 import CloseFriend from "../closefriend/CloseFriend";
 import { Link, useLocation } from 'react-router-dom';
 import Faq from '../../pages/faq/Faq';
+import axios from "axios";
 import { AuthContext } from "../../context/AuthContext";
 
 
@@ -13,6 +13,20 @@ export default function Sidebar() {
 
     const location = useLocation();
     const { user } = useContext(AuthContext);
+    const [Users, setUsers] = useState([]);
+
+    useEffect(()=>{
+        const fetchUser = async () =>{
+            try{
+          const userList = await axios.get("/users/all");
+          console.log(userList.data);
+          setUsers(userList.data);
+            }catch(err){
+                console.log(err);
+            }
+        };
+        fetchUser();
+      },[user, user.city]);
 
     return (
         <div className="sidebar">
@@ -69,8 +83,9 @@ export default function Sidebar() {
                     <span className="sidebarfriendname">sneakerhead1 </span>
 
                     </li> */}
-                    {Users.map(u => (
-                        <CloseFriend user={u} key={u.id} />
+                    {Users.filter(u => u._id !== user._id)
+                          .filter(u => u.city ? true : false).map(u => (
+                        <CloseFriend user={u} key={u._id} />
                     ))}
 
                 </ul>

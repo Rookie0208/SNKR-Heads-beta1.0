@@ -110,7 +110,7 @@
    padding-bottom: 0.3rem;
 }
 .searchresults li:hover {
-   background-color: rgba(186, 185, 185, 0.448);
+   background-color: #2521219e;
    border-radius: 8px;
 }
 

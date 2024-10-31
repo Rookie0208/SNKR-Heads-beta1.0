@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import "./profile.css";
 import Topbar from "../../components/topbar/Topbar";
 import Sidebar from "../../components/sidebar/Sidebar";
@@ -8,6 +8,9 @@ import axios from "axios";
 import { useState,useEffect } from 'react';
 import {useParams} from "react-router";
 import EditProfile from '../edit/Edit';
+import { CameraAltRounded } from '@mui/icons-material';
+import { common } from '@mui/material/colors';
+import { AuthContext } from '../../context/AuthContext';
 
 
 
@@ -16,12 +19,12 @@ export default function Profile() {
     const [user,setUser] = useState({});
     const params = useParams();
     const username=params.username;
-    // console.log(params) //params.username will give username in the url
+    const currentUser = JSON.parse(localStorage.getItem('user'));
+    //params.username will give username in the url
 
     useEffect(()=>{
         const fetchUser = async () =>{
           const res = await axios.get(`/users?username=${username}`)
-          console.log(res);
           setUser(res.data);
     
         };
@@ -29,7 +32,28 @@ export default function Profile() {
         // console.log("feed rendered");
       },[username]);//renders continously//[]means render only once
 
-      
+      const uploadPicture = async(e)  => {
+
+            const formData = new FormData();
+            const selectedFile = e.target.files[0];
+            const fileName = Date.now() + selectedFile.name;
+
+            formData.append('name', fileName);
+            formData.append('file', selectedFile);
+            const details = {
+                userId: user._id,
+                fileName: fileName
+            };
+            try {
+                await axios.post("/profile/upload", formData);
+                await axios.post(`/users/${details.userId}/profile/picture`, details);
+                window.location.reload();
+
+            } catch (error) {
+              console.error('Error uploading file:', error);
+            }
+
+      }
     
 
 
@@ -43,9 +67,16 @@ export default function Profile() {
                         <div className='profilecover'>
                         {/* <img className='profilecoverimg' src={`${PF}posts/post3.jpeg`} alt='' /> */}
                         <img className='profilecoverimg' src={user.coverPicture ? PF+user.coverPicture : PF+"icons/nocover.png"} alt='' />
-
                         {/* <img className='profileuserimg' src={`${PF}posts/post7.jpeg`} alt='' /> */}
                         <img className='profileuserimg' src={user.profilePicture ? PF+"posts/"+user.profilePicture : PF+"icons/noavatar.png"} alt='' />
+                        {currentUser._id === user._id && <span className='edit-profile-pic-btn'>
+                            <form>
+                            <label htmlFor="dp">
+                            <CameraAltRounded/>
+                            <input style={{ display: "none" }} type='file' id="dp" accept='.png,.jpeg,.jpg' onChange={uploadPicture}></input>
+                            </label>
+                            </form>
+                            </span>}
                         </div>
                         <div className='profileinfo'>
                             <h4 className='profileinfoname'>{user.username}</h4>

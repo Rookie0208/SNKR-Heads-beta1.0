@@ -129,7 +129,7 @@ export default function Topbar() {
                     <span className="topbarlink" onClick={handleClick}>SIGN-OUT</span>
                 </Link>
                 <Link className='topbarimg' to={`/profile/${user.username}`}>
-                    <img src={user.profilePicture ? PF + user.profilePicture : PF + "icons/noavatar.png"} className='topbarimg' alt="post1" />
+                    <img src={user.profilePicture ? PF+"posts/"+user.profilePicture : PF+"icons/noavatar.png"} className='topbarimg' alt="post1" />
                 </Link>
             </div>
 
